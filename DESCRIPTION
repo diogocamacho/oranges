@@ -1,0 +1,16 @@
+Package: oranges
+Type: Package
+Title: Over-representation analyses for human gene sets
+Version: 0.1.0
+Author: Diogo M. Camacho
+Maintainer: Diogo M. Camacho <diogo.camacho@wyss.harvard.edu>
+Description: 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: tidyverse,
+    Matrix
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
