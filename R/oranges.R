@@ -1,11 +1,11 @@
-# -----
-# ORANGES: Over-Representation ANanlysis for GEne Signature
-# based on data from CPDB + MSIGDB gene sets
-#
-# Diogo M. Camacho, Ph.D.
-# Wyss Institute @ Harvard
-#
-
+#' ORANGES: Over-Representation ANalysis for Gene Expression Signatures
+#'
+#' \code{oranges} returns the enrichment of pathway sets given a query gene signature based on Fisher's exact test.
+#'
+#' @param query_set Gene signature of interest, as EntrezIDs
+#' @param universe_entrez Full EntrezID set where the query set comes from (usually the full set of RNA-seq or microarray genes characterized in the transcriptomics platform)
+#' @param universe_symbols Gene symbols for the entire set of genes in universe
+#' @return A tibble.
 oranges <- function(query_entrez,universe_entrez,universe_names)
 {
   # load pathway sets

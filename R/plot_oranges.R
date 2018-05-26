@@ -1,3 +1,9 @@
+#' Plot enrichment results
+#'
+#' \code{plot_oranges} returns a plot for the top 25 enriched pathways identified with the \code{\link{oranges}} package.
+#'
+#' @param oranges_res ORANGES data frame
+#' @param thr Significance (FDR-corrected q-value) for pathway enrichment.  Defaults to q < 0.05
 plot_oranges <- function(oranges_res,thr)
 {
   if(missing(thr)) thr <- 0.05

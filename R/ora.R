@@ -1,13 +1,12 @@
-##############################################################################
-# SIGNATURE ENRICHMENT
-# This will compute the p-value based on Fisher's test to determine enrichment 
-# of a gene set against a gene signature.  Takes in a set of entrez ids.
-#
-# be aware of the universes: the query set universe is the one where the query set
-# was derived from, which is not necessarily the same as the signature universe
-#
-# signature.source and signature.name are character entries
-##############################################################################
+#' Fisher's exact test for pathway enrichment
+#'
+#' \code{ora} returns the enrichment of pathway sets given a query gene signature based on Fisher's exact test. Main function in the \code{\link{oranges}} package.
+#'
+#' @param query_set Gene signature of interest, as EntrezIDs
+#' @param universe_entrez Full EntrezID set where the query set comes from (usually the full set of RNA-seq or microarray genes characterized in the transcriptomics platform)
+#' @param universe_symbols Gene symbols for the entire set of genes in universe
+#' @param pathway_matrix A (sparse) matrix where each row is a pathway and each column a gene. As distributed, this matrix has pathway sets available in CPDB and MSigDB.
+#' @return A tibble with overlap of query set with pathway genes, set of query genes in pathway (when found), and Fisher's exact test p-value
 ora <- function(query_set,universe_entrez,universe_symbols,pathway_matrix)
 {
   
