@@ -1,5 +1,5 @@
 calculate_enrichment <- function(genes_query, pathways_universe, pathways_query) {
-  N <- q_length # <-- how big query set is
+  N <- length(genes_query) # <-- how big query set is
   K <- Matrix::rowSums(pathways_universe) # <-- sizes of pathways
   M <- ncol(pathways_universe) # <-- size of my universe
   
