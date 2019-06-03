@@ -7,7 +7,7 @@
 #' @param universe_symbols Gene symbols for the entire set of genes in universe
 #' @param pathway_matrix A (sparse) matrix where each row is a pathway and each column a gene. As distributed, this matrix has pathway sets available in CPDB and MSigDB.
 #' @return A tibble with overlap of query set with pathway genes, set of query genes in pathway (when found), and Fisher's exact test p-value
-ora <- function(query_set,universe_entrez,universe_symbols,pathway_matrix)
+ora <- function(query_set, universe_entrez, universe_symbols, pathway_matrix)
 {
   
   # Cleaning NA in query set
@@ -23,32 +23,35 @@ ora <- function(query_set,universe_entrez,universe_symbols,pathway_matrix)
   for (i in seq(1,length(enr))) {
     
     # all genes in pathway
-    x1 <- names(which(pathway_matrix[i,] == 1)) 
+    x1 <- names(which(pathway_matrix[i, ] == 1)) 
     # M <- ncol(pathway_matrix) # <-- size of my universe
     
     # confusion matrix
     # N <- length(query_set) # <-- how big query set is
     
-    x2 <- intersect(query_set,x1)
+    x2 <- intersect(query_set, x1)
     X <- length(x2)
-    X_symbols <- paste(as.character(universe_symbols[which(universe_entrez %in% x2)]),collapse=" | ")
+    X_symbols <- paste(as.character(universe_symbols[which(universe_entrez %in% x2)]), collapse=" | ")
     
     # K <- length(x1) # <-- number of genes in pathway
     
-    a1 <- X
-    a2 <- N - a1
-    a3 <- K[i] - a1 
-    a4 <- M - (a1 + a2 + a3)
+    a2 <- N - X
+    a3 <- K[i] - X 
+    a4 <- M - (X + a2 + a3)
     
     # compute fisher's exact test
     if (N == 0)
     {
-      enr[[i]] <- data_frame(gene_overlap = 0,genes_pathway = NA,p_val = 1)
+      enr[[i]] <- tibble::tibble(gene_overlap = 0,
+                                 genes_pathway = NA,
+                                 p_val = 1)
     } else {
-      res <- fisher.test(cbind(c(a1,a3),c(a2,a4)),alternative="two.sided")$p.value
-      enr[[i]] <- data_frame(gene_overlap = X/K[i],genes_pathway = X_symbols,p_val = res)
+      res <- fisher.test(cbind(c(X, a3), c(a2, a4)), alternative = "two.sided")$p.value
+      enr[[i]] <- tibble::tibble(gene_overlap = X/K[i],
+                                 genes_pathway = X_symbols,
+                                 p_val = res)
     }
   }
-  enr <- bind_rows(enr)
+  enr <- dplyr::bind_rows(enr)
   return(enr)
 }
