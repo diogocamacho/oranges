@@ -1,4 +1,4 @@
-Package: ORANGES
+Package: oranges
 Type: Package
 Title: Over-representation analyses for human gene sets
 Version: 1.0.0
