@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup, echo = FALSE}
-library(ORANGES)
+library(oranges)
 library(ggplot2)
 library(dplyr)
 library(Matrix)
@@ -35,7 +35,7 @@ For the data provided as example here, I have defined 2 groups (tumor and health
 ```{r define_signature}
 query <- lung_res %>% 
   tibble::add_column(., entrez_id = genes_lung$ENTREZID, .before = 1) %>%
-  tibble::add_column(., symbol = genes_lung$ENTREZID, .before = 2) %>%
+  tibble::add_column(., symbol = genes_lung$SYMBOL, .before = 2) %>%
   dplyr::filter(., abs(logFC) > 1, adj.P.Val < 0.01)
 ```
 
