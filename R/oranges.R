@@ -9,11 +9,13 @@
 #' @return A tibble.
 oranges <- function(query_entrez, universe_entrez) {
 
-  wp <- subset_pathways(query_entrez = query_entrez, universe_entrez = universe_entrez) #<-- returns ids (columns)
+  wp <- subset_pathways(query_entrez = query_entrez, 
+                        universe_entrez = universe_entrez) #<-- returns ids (columns)
 
   eps <- extract_pathways(wp)
 
-  gid <- genes_pathway(genes_query = wp$genes_query, pathways_query = wp$pathways_query)
+  gid <- genes_pathway(genes_query = eps$genes_query, 
+                       pathways_query = eps$pathways_query)
 
   enr <- calculate_enrichment(genes_query = wp$genes_query,
                               pathways_universe = wp$pathways_universe,
