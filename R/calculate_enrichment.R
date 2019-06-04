@@ -13,10 +13,10 @@ calculate_enrichment <- function(genes_query, pathways_universe, pathways_query)
   FT <- cbind(X = X, fn = a3, fp = a2, tn = a4)
   sig_enr <- apply(FT, 1, function(x) fisher.test(matrix(x, 2, 2), alternative = "two.sided")$p.value)
   
-  ug <- unique(pathway_info$group)
+  ug <- unique(cpdb_data$pathway_info$group)
   cor_p <- integer(length = length(sig_enr))
   for (i in seq(1, length(ug))) {
-    cor_p[pathway_info$group == ug[i]] <- p.adjust(sig_enr[pathway_info$group == ug[i]], "fdr")
+    cor_p[cpdb_data$pathway_info$group == ug[i]] <- p.adjust(sig_enr[cpdb_data$pathway_info$group == ug[i]], "fdr")
   }
   
   stats_enr <- list(number_genes = X,

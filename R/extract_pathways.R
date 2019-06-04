@@ -1,9 +1,9 @@
 extract_pathways <- function(ids) {
-  unames <- gene_names[ids$uid]
-  qnames <- gene_names[ids$qid]
+  unames <- cpdb_data$gene_symbols[ids$uid]
+  qnames <- cpdb_data$gene_symbols[ids$qid]
   
-  sub_p <- P[, ids$uid]
-  sub_q <- P[, ids$qid]
+  sub_p <- cpdb_data$pathway_matrix[, ids$uid]
+  sub_q <- cpdb_data$pathway_matrix[, ids$qid]
   
   eps <- list(genes_universe = unames,
               genes_query = qnames,

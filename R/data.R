@@ -12,4 +12,4 @@
 #'   \item A vector of gene symbols for all gene EntrezIDs in the matrix P.
 #' }
 #' 
-"pathway_sets"
+"cpdb_data"

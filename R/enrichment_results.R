@@ -1,6 +1,6 @@
 enrichment_results <- function(genes_pathway, number_genes, gene_ratio, nominal_p, p_adj) {
-  enr <- tibble::tibble(data_source = pathway_info$pathway_source,
-                        name = pathway_info$pathway_name,
+  enr <- tibble::tibble(data_source = cpdb_data$pathway_info$pathway_source,
+                        name = cpdb_data$pathway_info$pathway_name,
                         number_genes = number_genes,
                         gene_ratio = gene_ratio,
                         pathway_proportion = sapply(gene_ratio, function(s) (as.numeric(strsplit(s, "\\/")[[1]]) / max(as.numeric(strsplit(s, "\\/")[[1]])))[1]),
