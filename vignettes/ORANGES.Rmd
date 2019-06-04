@@ -44,13 +44,15 @@ Below I illustrate what this looks like in a volcano plot, where the genes in re
 ```{r volcano, fig.height=7, fig.width=7, fig.align="center"}
 lung_res %>% 
   ggplot() +
-  geom_point(aes(x = logFC, y = -log10(adj.P.Val)), alpha = 0.5) +
+  geom_point(aes(x = logFC, y = -log10(adj.P.Val)), alpha = 0.5, size = 3) +
   geom_point(data = subset(lung_res, abs(logFC) > 1 & adj.P.Val < 0.01), aes(x = logFC, y = -log10(adj.P.Val)), alpha = 0.5, color = "red") +
   labs(x = "log2(fold change)", y = "-log10(adjusted p-value)") +
   theme_bw() +
   theme(panel.grid = element_blank(),
-        axis.text = element_text(size = 12),
-        axis.title = element_text(size = 12))
+        axis.text = element_text(size = 24),
+        axis.title = element_text(size = 24),
+        axis.ticks.length = unit(0.5, "cm"),
+        axis.ticks = element_line(size = 1))
 ```
 
 

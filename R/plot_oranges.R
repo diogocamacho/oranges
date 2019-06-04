@@ -19,10 +19,11 @@ plot_oranges <- function(res, num_pathways) {
       labs(x = "Pathway set", y = "-log10(adjusted p-value)") +
       facet_grid(. ~ data_source, scales = "free") + 
       theme_bw() + 
-      theme(axis.text.x = element_blank(),
+      theme(axis.ticks.length = unit(0.5, "cm"),
+            axis.ticks = element_line(size = 1),
+            axis.text.x = element_blank(),
             axis.ticks.x = element_blank(),
             axis.text.y = element_text(size = 12, color = "black"),
-            axis.ticks.y = element_line(size = 1, colour = "black"),
             axis.title = element_text(size = 12, color = "black"),
             panel.grid = element_blank(),
             strip.text.x = element_text(size = 12, color = "black"))
@@ -36,12 +37,14 @@ plot_oranges <- function(res, num_pathways) {
       scale_color_viridis_c() + 
       labs(x = "Pathway set", y = "-log10(adjusted p-value)") +
       theme_bw() + 
-      theme(axis.text.x = element_blank(),
+      theme(axis.ticks.length = unit(0.5, "cm"),
+            axis.ticks = element_line(size = 1),
+            axis.text.x = element_blank(),
             axis.ticks.x = element_blank(),
             axis.text.y = element_text(size = 12, color = "black"),
-            axis.ticks.y = element_line(size = 0.5, colour = "black"),
             axis.title = element_text(size = 12, color = "black"),
-            panel.grid = element_blank())
+            panel.grid = element_blank(),
+            strip.text.x = element_text(size = 12, color = "black"))
   }
 }
 
