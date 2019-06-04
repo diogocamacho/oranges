@@ -41,7 +41,7 @@ query <- lung_res %>%
 
 Below I illustrate what this looks like in a volcano plot, where the genes in red are those that are inlcuded in the signature.
 
-```{r volcano}
+```{r volcano, fig.height=7, fig.width=7, fig.align="center"}
 lung_res %>% 
   ggplot() +
   geom_point(aes(x = logFC, y = -log10(adj.P.Val)), alpha = 0.5) +
@@ -90,11 +90,6 @@ enr <- calculate_enrichment(genes_query = eps$genes_query,
 
 which provides us with a data frame where each row corresponds to a given pathway for a given data source, and where the nominal and corrected p-values for the enrichment are computed. 
 
-```{r enr_table}
-head(enr)
-```
-
-This is hard to read and so next we will generate a results data frame.
 
 ### Results data frame
 Taking the output of the functions above, we can construct a results data frame with the `enrichment_results` function:
@@ -118,7 +113,7 @@ We can finally produce a plot of the enrichment using `ggplot2`, as you'll see n
 ### Plotting
 Plotting of the enrichment results can be easily done with the `plot_oranges` function:
 
-```{r plotting}
+```{r plotting, fig.height=7, fig.width=7, fig.align="center"}
 plot_oranges(res)
 ```
 

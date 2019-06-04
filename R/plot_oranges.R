@@ -16,10 +16,16 @@ plot_oranges <- function(res, num_pathways) {
       ggplot() + 
       geom_point(aes(x = name, y = -log10(padj), color = pathway_proportion, size = number_genes), alpha = 0.5) +
       scale_color_viridis_c() + 
+      labs(x = "Pathway set", y = "-log10(adjusted p-value)") +
       facet_grid(. ~ data_source, scales = "free") + 
       theme_bw() + 
       theme(axis.text.x = element_blank(),
-            panel.grid = element_blank())
+            axis.ticks.x = element_blank(),
+            axis.text.y = element_text(size = 12, color = "black"),
+            axis.ticks.y = element_line(size = 1, colour = "black"),
+            axis.title = element_text(size = 12, color = "black"),
+            panel.grid = element_blank(),
+            strip.text.x = element_text(size = 12, color = "black"))
   } else {
     res %>% 
       dplyr::filter(., padj != 1) %>%
@@ -28,8 +34,13 @@ plot_oranges <- function(res, num_pathways) {
       ggplot() + 
       geom_point(aes(x = name, y = -log10(padj), color = pathway_proportion, size = number_genes), alpha = 0.5) +
       scale_color_viridis_c() + 
+      labs(x = "Pathway set", y = "-log10(adjusted p-value)") +
       theme_bw() + 
       theme(axis.text.x = element_blank(),
+            axis.ticks.x = element_blank(),
+            axis.text.y = element_text(size = 12, color = "black"),
+            axis.ticks.y = element_line(size = 0.5, colour = "black"),
+            axis.title = element_text(size = 12, color = "black"),
             panel.grid = element_blank())
   }
 }
