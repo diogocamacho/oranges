@@ -17,9 +17,9 @@ oranges <- function(query_entrez, universe_entrez) {
   gid <- genes_pathway(genes_query = eps$genes_query, 
                        pathways_query = eps$pathways_query)
 
-  enr <- calculate_enrichment(genes_query = wp$genes_query,
-                              pathways_universe = wp$pathways_universe,
-                              pathways_query = wp$pathways_query)
+  enr <- calculate_enrichment(genes_query = eps$genes_query,
+                              pathways_universe = eps$pathways_universe,
+                              pathways_query = eps$pathways_query)
 
   res <- enrichment_results(genes_pathway = gid,
                             number_genes = enr$number_genes,
