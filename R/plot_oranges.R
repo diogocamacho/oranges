@@ -14,7 +14,7 @@ plot_oranges <- function(res, num_pathways) {
       dplyr::arrange(., padj) %>%
       dplyr::slice(1:num_pathways) %>%
       ggplot() + 
-      geom_point(aes(x = name, y = -log10(padj), color = gene_overlap, size = number_genes), alpha = 0.5) +
+      geom_point(aes(x = name, y = -log10(padj), color = pathway_proportion, size = number_genes), alpha = 0.5) +
       scale_color_viridis_c() + 
       facet_grid(. ~ data_source, scales = "free") + 
       theme_bw() + 
@@ -26,7 +26,7 @@ plot_oranges <- function(res, num_pathways) {
       dplyr::arrange(., padj) %>%
       dplyr::slice(1:num_pathways) %>%
       ggplot() + 
-      geom_point(aes(x = name, y = -log10(padj), color = gene_overlap, size = number_genes), alpha = 0.5) +
+      geom_point(aes(x = name, y = -log10(padj), color = pathway_proportion, size = number_genes), alpha = 0.5) +
       scale_color_viridis_c() + 
       theme_bw() + 
       theme(axis.text.x = element_blank(),
